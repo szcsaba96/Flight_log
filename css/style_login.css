@@ -101,3 +101,14 @@ main hr {
     display: inline-block;
     margin-right: 20px;
 }
+
+.error {
+    padding: 6px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 400px;
+    text-align: left;
+    border-radius: 4px;
+    background-color: #cc5c54;
+    font: bold;
+}

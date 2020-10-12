@@ -36,7 +36,7 @@
 
                 <div>
                     <label for="email">Email</label> <br>
-                    <input type="text" name="email" id="email" required>
+                    <input type="email" name="email" id="email" required>
                 </div>
 
                 <div>
@@ -44,9 +44,13 @@
                     <input type="password" name="password" id="password" required>
                 </div>
 
+                <div class="error js-error" style='display: none;'>
+                </div>
+                
                 <div>
                     <button type="submit">Login</button>
                 </div>
+
 
                 <p>
                     You don't have an account? 
@@ -63,6 +67,7 @@
     <footer>
 
      <a href="" class="link">Read more here.</a>
+     <?php require_once "inc/footer.php" ?>
 
     </footer>
 </body>

@@ -70,7 +70,7 @@
                     <input type="password" name="password" id="password" required>
                 </div>
 
-                <div class="js-error" style='display: none;'></div>
+                <div class="error js-error" style='display: none;'></div>
 
                 <div>
                     <button type="submit">Register</button>
