@@ -1,0 +1,60 @@
+<nav>
+    <ul>
+        <li class="navbar_right">
+            <div>
+            <a href="logout.php" class="logout"> 
+                <i class="fas fa-power-off"></i>
+                Logout
+            </a>
+            </div>
+            
+        </li>
+
+        <li class="navbar_right">
+            <div class="dropdown">
+                    <button class="dropbtn"> <i class="fas fa-user-circle"></i> Profile
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+            </div>
+        </li>
+
+        
+    </ul>
+</nav>
+
+<div class="in1 navbar">
+
+    <ul id="sidemenu" class="sidemenu_list">
+        <li class="sidemenu_items">
+            
+            <a href="dashboard.php">
+                <i class="fas fa-home"></i> 
+                Dashboard
+            </a>
+        </li>
+        <li class="sidemenu_items">
+            
+            <a href="myflights.php">
+                <i class="fas fa-list-alt"></i>
+                 My flights</a>
+        </li>
+        <li class="sidemenu_items">
+            
+            <a href="documents.php">
+                <i class="fas fa-file-alt"></i>
+                My Documents</a>
+        </li>
+        <li class="sidemenu_items">
+            <a href="fleet.php">
+                <i class="fas fa-plane"></i>
+                Fleet</a>
+        </li>
+    </ul>
+</div>
+

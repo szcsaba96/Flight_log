@@ -104,3 +104,150 @@ $(document)
 
     return false;
 })
+
+.on("submit", "form.js-addflight", function(event) {
+    event.preventDefault();
+
+    var _form = $(this);
+
+    var _error = $(".js-error", _form);
+
+    var data = {
+        flight_date: $("#flight_date").val(),
+        reg_number: $("#reg_number").val(),
+        pilot: $("#pilot").val(),
+        instructor: $("#instructor").val(),
+        dep_place: $("#dep_place").val(),
+        arr_place: $("#arr_place").val(),
+        flight_time: $("#flight_time").val(),
+        flights: $("#flights").val(),
+    }
+
+    console.log(data);
+
+    $.ajax ({
+        type: 'POST',
+        url: 'ajax/addflight.php',
+        data: data,
+        dataType: 'json',
+        async: true,
+    })
+    .done(function ajaxDone(data) {
+        if(data.redirect !== undefined) {
+            window.location = data.redirect;
+        } else if(data.error !== undefined) {
+            _error.html(data.error).show();
+        }
+    })
+    .fail(function ajaxFailed(e) {
+        console.log('failed');
+    })
+    .always(function ajaxAlwaysDoThis(data) {
+        console.log('Always');
+    })
+
+
+    return false;
+
+})
+
+.on("submit", "form.js-search", function(event) {
+    
+    
+    event.preventDefault();
+
+    var _form = $(this);
+
+    var _error = $(".js-error", _form);
+
+    var data = {
+        from: $("#from").val(),
+        to: $("#to").val(),
+    }
+
+    console.log(data);
+
+    $.ajax ({
+        type: 'POST',
+        url: "ajax/myflights.php",
+        data: data,
+        dataType: 'json',
+    })
+    .done(function ajaxDone(data) {
+        if(data.redirect !== undefined) {
+            window.location = data.redirect;
+            $('#table1').show();
+        } else if(data.error !== undefined) {
+            _error.html(data.error).show();
+        }
+    })
+    .fail(function ajaxFailed(e) {
+        console.log('failed');
+    })
+    .always(function ajaxAlwaysDoThis(data) {
+        console.log('Always');
+    })
+
+
+    return false;
+
+})
+
+.on("submit", "form.js-add_doc", function(event) {
+    event.preventDefault();
+
+    var _form = $(this);
+
+    var _error = $(".js-error", _form);
+
+    var data = {
+        type: $("#type").val(),
+        descr: $("#descr").val(),
+        file1: $("#file1").val(),
+        file2: $("#file2").val(),
+    }
+
+    console.log(data);
+
+    $.ajax ({
+        type: 'POST',
+        url: 'ajax/add_doc.php',
+        data: data,
+        dataType: 'json',
+        async: true,
+    })
+    .done(function ajaxDone(data) {
+        if(data.redirect !== undefined) {
+            window.location = data.redirect;
+        } else if(data.error !== undefined) {
+            _error.html(data.error).show();
+        }
+    })
+    .fail(function ajaxFailed(e) {
+        console.log('failed');
+    })
+    .always(function ajaxAlwaysDoThis(data) {
+        console.log('Always');
+    })
+
+
+    return false;
+
+})
+
+.ready(function() { 
+    $('#type').on('change', do_something); 
+}); 
+ 
+function do_something() { 
+    var selected = $('#type').val(); 
+    console.log(selected);
+    $.ajax({ 
+        type:       'POST', 
+        dataType:   'json', 
+        data:       { value: selected }, 
+        async:      true    
+    }); 
+} 
+
+

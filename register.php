@@ -3,6 +3,8 @@
     define('__CONFIG__', true);
     //require the config
     require_once "inc/config.php"; 
+
+    Page::ForceDashboard();
 ?>
 
 
@@ -45,7 +47,7 @@
                     </div>
             </div>
 
-         <div>
+                <div>
                     <label for="birthday">Date of birth</label> <br>
                     <input type="date" id="birthday" name="birthday" required>
                 </div>

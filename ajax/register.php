@@ -45,7 +45,7 @@
         //login
         $_SESSION['user_id'] = (int) $user_id;
 
-        $return['redirect'] = 'main.php?welcome';
+        $return['redirect'] = 'dashboard.php?welcome';
         $return['is_logged_in'] = true;
     }
 

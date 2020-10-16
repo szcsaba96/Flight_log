@@ -25,7 +25,7 @@
 
 			if(password_verify($password, $hash)) {
 				// User is signed in
-				$return['redirect'] = 'main.php';
+				$return['redirect'] = 'dashboard.php';
 
 				$_SESSION['user_id'] = $user_id;
 			} else {
