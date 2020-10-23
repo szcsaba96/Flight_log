@@ -87,7 +87,6 @@ mysqli_close($con);
 ```
 
 ## Features
-List of features ready and TODOs for future development
 * View flight experience categorized by type of aircraft flown
 * View the available fleet owned by the organization
 * Upload documents to get them verified
@@ -95,10 +94,10 @@ List of features ready and TODOs for future development
 To-do list:
 * Improve the coding by cleaning it up
 * Adding more features to dashboard
-* Adding admininstrator user privileges
+* Adding admin user privileges
 
 ## Status
 Project is: _in progress_
 
 ## Inspiration
-Project inspired by learing full stack web development.
+Project inspired by learning full stack web development.
