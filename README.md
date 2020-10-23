@@ -94,6 +94,7 @@ List of features ready and TODOs for future development
 
 To-do list:
 * Improve the coding by cleaning it up
+* Adding more features to dashboard
 * Adding admininstrator user privileges
 
 ## Status
