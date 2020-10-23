@@ -32,18 +32,6 @@ class User {
             exit;
         }   
     }
-
-    public static function selectULM() {
-        $con = DB::getConnection();
-
-        $ulm = con->prepare("SELECT aircraft_reg FROM fleet WHERE type = 'ULM' ");
-        $ulm ->execute();
-
-        $ulm->fetch(PDO::FETCH_OBJ);
-
-        return $ulm;
-
-    }
 }
 
 ?>

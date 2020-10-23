@@ -14,9 +14,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main page</title>
+    <title>Myflights</title>
     <link rel="stylesheet" href="css/style_main.css">
     <link rel="stylesheet" href="css/style_myflights.css">
+    <link rel="icon" type="image/png" href="inc/images/air.png">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
     <script>
@@ -36,10 +37,12 @@
             document.getElementById("txtHint").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET","getuser.php?from="+from + "&to=" + to + "&type=" + type,true);
+        xmlhttp.open("GET","ajax/getuserflights.php?from="+from + "&to=" + to + "&type=" + type,true);
         xmlhttp.send();
         }
     }
+
+
 
     function setFrom(str) {
         if(typeof from !== "undefined") {
@@ -59,6 +62,8 @@
         type = str;
         showUser(from, to, type);
     }
+
+    
 
     </script>
        

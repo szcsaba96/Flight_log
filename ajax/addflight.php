@@ -60,7 +60,6 @@
     $addFlight -> bindParam(':fleet_id', $fleet_id, PDO::PARAM_INT);
     $addFlight -> execute();
 
-    
     //get type
     $getType = $con ->prepare("SELECT type FROM fleet WHERE (aircraft_id = :fleet_id)");
     $getType -> bindParam(':fleet_id', $fleet_id, PDO::PARAM_INT);

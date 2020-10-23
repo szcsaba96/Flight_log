@@ -26,7 +26,7 @@ $result = mysqli_query($con,$sql);
 
 echo "<link rel='stylesheet' href='css/style_fleet.css'>";
 
-echo "<table class='fly_table'>
+echo "<table class='fly_table' style='margin-left: 15%;'>
 <tr>
   <th>Registration number</th>
   <th>Manufacturer</th>

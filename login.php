@@ -16,17 +16,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlyWeb Login Page</title>
     <link rel="stylesheet" href="css/style_login.css">
-    <link rel="icon" type="image/png" href="air.png">
+    <link rel="stylesheet" href="css/style_main.css">
+    <link rel="icon" type="image/png" href="inc/images/air.png">
 </head>
 
 <body>
-    <nav>
-        <a class="active" href="#home">Home</a>
-        <a href="#contact">Contact</a>
-        <div class="nav_right">
-            ATO
-        </div>
-    </nav>
+<nav>
+    <ul style="display:contents;">
+        <li class="navbar_left">
+            <div>
+            <img src="inc/images/logo2.png" style="height: 50px;width: 75px;">
+            </div>
+        </li>
+        <li class="navbar_right">
+            <div>
+            <a href="contact.php" class="logout"> 
+            <i class="far fa-envelope"></i>
+                Contact
+            </a>
+            </div>
+        </li>   
+    </ul>
+</nav>
 
     <main>
 
