@@ -21,6 +21,7 @@ The purpose of this project is to ease the work of the pilots, keeping track of 
 * PHP - version 7.4
 * JavaScript - version 1.8.5
 * MySQL
+* AJAX
 
 ## Code Examples
 ```
