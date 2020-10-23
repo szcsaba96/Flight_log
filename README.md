@@ -23,7 +23,6 @@ The purpose of this project is to ease the work of the pilots, keeping track of 
 * MySQL
 
 ## Code Examples
-Show examples of usage:
 ```
 <?php
 
