@@ -23,7 +23,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: rgb(5, 196, 5);
+    background-color: rgb(133, 133, 133);
     color: black;
 }
 
@@ -100,4 +100,15 @@ main hr {
 .inline_block {
     display: inline-block;
     margin-right: 20px;
+}
+
+.error {
+    padding: 6px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 400px;
+    text-align: left;
+    border-radius: 4px;
+    background-color: #cc5c54;
+    font: bold;
 }

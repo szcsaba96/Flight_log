@@ -1,0 +1,19 @@
+
+.table-cell label{
+    display: inline-block;
+    padding-left: 100px;
+    padding-right: 15px;
+}
+
+.table-cell select{
+    width: 450px;
+}
+
+.table-cell .descr{
+    width: 425px;
+    margin-left: 30px;
+    display: inline-block;
+}
+
+
+    

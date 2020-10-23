@@ -1,0 +1,267 @@
+.modal_table {
+  display: table;
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+}
+.table-row {
+  display: table-row;
+}
+.table-cell {
+  display: table-cell;
+  padding: 0.5em;
+}
+.table-colgroup {
+  display: table-column-group;
+}
+.table-col {
+  display: table-column;
+}
+.col-1 {
+  text-align: center;   
+}
+.col-2 {
+  
+}
+
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+table td {
+  text-align: center; 
+    vertical-align: middle;
+}
+
+.info_box_table {
+  display: inline-table;
+  table-layout: fixed;
+  width: 400px;
+  height: 200px;
+}
+
+.table-foot {
+  background-color: rgb(224, 223, 223);
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.table-foot i {
+  color: #2e6da4;
+}
+
+.info_box1_left {
+  margin: 5px;
+}
+
+.info_box_body {
+  width: 400px;
+  height: 200px;
+  border-radius: 4px;
+
+}
+
+
+.info_box1 {
+  margin-top: 35px;
+  border-color: #f0ad4e;
+  color: #fff;
+  background-color: #f0ad4e;
+}
+
+.info_box2 {
+  margin-top: 100px;
+  border-color: #5cb85c;
+  color: #fff;
+  background-color: #5cb85c;
+}
+
+.info_box3 {
+  border-color: #d9534f;
+  color: #fff;
+  background-color: #d9534f;
+}
+
+.info_box1_row {
+  margin: 5px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+.workspace {
+  padding: 15px;
+}
+
+.btn{
+  height:50px;
+  line-height:50px;
+  vertical-align:middle;
+  text-align:center;
+  padding:0 10px;
+  color:#ffffff;
+  background-color:#007bff;
+  position:relative;
+  display:inline-block;
+  border: none;
+  cursor: pointer;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.btn:after{
+  position:absolute;
+  right:-20px;
+  content:" ";
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 25px 0 25px 20px;
+  border-color: transparent transparent transparent #007bff;
+  border-radius: 1px;
+}
+.btn:hover{
+  background-color:rgb(0, 34, 226);
+}
+.btn:hover:after{
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 25px 0 25px 20px;
+  border-color: transparent transparent transparent rgb(0, 34, 226);
+}
+
+.modal_header {
+  padding: 15px;
+  margin-left: 10px;
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+.modal_formpage {
+  padding: 15px;
+  font-family:  Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.row {
+  display: inline-block;
+}
+
+.form1  { display: table; }
+
+.form1 p  { 
+  display: table-row;  
+}
+
+.col {
+  display: table-column;
+}
+
+.form1 label { 
+  display: table-cell;
+  text-align: right; 
+  padding: 5px;
+}
+
+.form1 input, select { 
+  display: table-cell; 
+  padding: 10px;
+  margin: 5px;
+  width: 300px;
+  border-radius: 4px;
+  border: 1px solid grey;
+}
+
+.add_button {
+  padding: 5px;
+  margin: 5px;
+  float: right;
+  
+}
+
+.add_button button {
+    background-color:#337ab7;
+    color: white;
+    border-color: #2e6da4;
+    font-size: 14px;
+    padding: 6px 12px;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+
+}
+
+.error {
+  padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    width: 200px;
+    text-align: left;
+    border-radius: 4px;
+    background-color: #cc5c54;
+    border: 1px solid transparent;
+}
+
+.info {
+  padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    width: 70%;
+    text-align: left;
+    border-radius: 7px;
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.info1 {
+  margin-top: 20px;
+}
+
+.info1 p {
+  margin: 8px;
+  font-size: 15px;
+}

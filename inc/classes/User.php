@@ -11,13 +11,15 @@ class User {
     public $user_id;
     public $email;
     public $reg_time;
+    public $first_name;
+    public $last_name;
 
     public function __construct(int $user_id) {
         $this->con = DB::getConnection();
 
         $user_id = Filter::Int( $user_id );
 
-        $user = $this->con->prepare("SELECT user_id, email, reg_time FROM users WHERE user_id = :user_id LIMIT 1");
+        $user = $this->con->prepare("SELECT user_id, email, reg_time, first_name, last_name FROM users WHERE user_id = :user_id LIMIT 1");
         $user->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $user->execute();
 
@@ -27,6 +29,8 @@ class User {
             $this->email = (string) $user->email;
             $this->user_id = (int) $user->user_id;
             $this->reg_time = (string) $user->reg_time;
+            $this->first_name = (string) $user->first_name;
+            $this->last_name = (string) $user->last_name;
 
         } else {
             //no user, redirect to logout
@@ -51,6 +55,43 @@ class User {
         
         $user_found = (boolean) $findUser->rowCount();
         return $user_found;
+    }
+
+    public function getName() {
+
+    $full_name = $this->first_name . " " . $this->last_name;
+
+    return $full_name;
+
+    }
+
+    public static function lastFlight($user_id, $type) {
+
+    $con = DB::getConnection();
+
+    $getlastDate = $con -> prepare("SELECT max(flight_date) FROM flights, fleet WHERE (flights.user_id = :user_id AND flights.fleet_id = fleet.aircraft_id AND fleet.type = '".$type."')");
+    $getlastDate ->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+    $getlastDate -> execute();
+
+    $getlastDate = $getlastDate->fetch(PDO::FETCH_ASSOC);
+
+    return $getlastDate['max(flight_date)'];
+    }
+
+    public static function totalHours($user_id, $type) {
+
+        $con = DB::getConnection();
+    
+        $totalHours = $con -> prepare("SELECT ".$type." FROM experience WHERE user_id = :user_id");
+        $totalHours ->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+        $totalHours -> execute();
+    
+        $totalHours = $totalHours->fetch(PDO::FETCH_ASSOC);
+
+        $pieces = explode(':', $totalHours[$type]);
+
+    
+        return $pieces[0]."h ".$pieces[1]."'";
     }
 }
 

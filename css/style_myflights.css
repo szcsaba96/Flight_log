@@ -1,0 +1,79 @@
+.side-by-side {
+    width: 100%;
+  
+  }
+  .side-by-side li {
+    display: inline;
+  }
+
+  .side-by-side li {
+    float: left;
+  }
+
+  form input, select { 
+    padding: 10px;
+    margin: 5px;
+    width: 300px;
+    border-radius: 4px;
+    border: 1px solid grey;
+  }
+
+  form label { 
+    text-align: right; 
+    padding: 5px;
+    font-weight: bold;
+  }
+
+  .add_button {
+    padding: 5px;
+    margin: 5px;
+    float: right;
+    
+  }
+  
+  .add_button button {
+      background-color:#337ab7;
+      color: white;
+      border-color: #2e6da4;
+      font-size: 14px;
+      padding: 6px 12px;
+      text-align: center;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      cursor: pointer;
+}
+
+.fly_table {
+  font-size: 16px;
+  font-weight: 400;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.fly_table tr th {
+  font-size: 14px;
+  padding: 15px 35px;
+  background-color: #333;
+  color: #ffffff;
+  text-align: center;
+}
+
+.fly_table td {
+  text-align: center;
+  padding: 30px 15px;
+
+}
+
+.fly_table .tbody_row {
+  border-bottom: 1px solid #dddddd;
+}
+
+.fly_table .even {
+  background-color: #f3f3f3;
+  border-bottom: grey;
+}
+

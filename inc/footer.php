@@ -15,4 +15,5 @@ if(!defined('ALLOW FOOTER')) {
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.8/dist/js/uikit-icons.min.js"></script>
 
 <script src="js/main.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 

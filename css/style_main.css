@@ -9,7 +9,7 @@ nav {
 }
 
 nav a {
-    float: left;
+    float: right;
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
@@ -23,12 +23,28 @@ nav a {
 
 .navbar {
     position: fixed;
+    overflow: hidden;
     left: 180px;
     width: 180px;
     height: 95%;
     margin-left: -172px;
     border: none;
-    background-color: #222;
+    background-color: #333;
+}
+
+.navbar_right {
+    float: right;
+    color: white;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.navbar_left {
+  float: left;
+  color: white;
+  overflow: hidden;
+  padding: 10px;
+  margin-left: 25px;
 }
 
 .sidemenu_list {
@@ -44,18 +60,112 @@ nav a {
 .sidemenu_items a {
     color: #f2f2f2;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .dashboard_body {
     color: black;
     margin-top: 15px;
-    margin-left: 195px;
-    width: 75%;
-    border: 1px solid chartreuse;
-    
+    margin-left: 15%;
+    width: 80%;
 }
 
 .dashboard_before_after {
+    background-color:#eee;
+    border-radius: 4px;
+    
+}
+
+  /* The dropdown container */
+  .dropdown {
+    overflow: hidden;
+  }
+  
+  /* Dropdown button */
+  .dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+  }
+  
+  /* Add a red background color to navbar links on hover */
+  .navbar a:hover, .dropdown:hover .dropbtn {
     background-color: grey;
+  }
+  
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  /* Add a grey background color to dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .logout {
+      padding: 14px 16px;
+      font-size: 16px;
+      
+  }
+
+  .center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+  }
+
+  .form2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    width: 80vw;
+    margin: 0 auto;
+    gap: 0.5em 1em;
+  }
+  
+  .form2 label {
+    padding-top: 15px;
+    text-align: right;
+  }
+  .form2 label::after {
+    content: ':'
+  }
+
+  .form2 button {
+    margin-left: 5px;
+    background-color:#337ab7;
+    color: white;
+    border-color: #2e6da4;
+    font-size: 14px;
+    padding: 6px 12px;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
 }

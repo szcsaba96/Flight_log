@@ -3,6 +3,8 @@
     define('__CONFIG__', true);
     //require the config
     require_once "inc/config.php"; 
+
+    Page::ForceDashboard();
 ?>
 
 
@@ -13,17 +15,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlyWeb</title>
-    <link rel="stylesheet" href="css/style_login.css" type="text/css"/>
+    <link rel="stylesheet" href="css/style_login.css">
+    <link rel="stylesheet" href="css/style_main.css">
+    <link rel="icon" type="image/png" href="inc/images/air.png">
 </head>
 
 <body>
-    <nav>
-        <a class="active" href="#home">Home</a>
-        <a href="#contact">Contact</a>
-        <div class="nav_right">
-            ATO
-        </div>
-    </nav>
+<nav>
+    <ul style="display:contents;">
+        <li class="navbar_left">
+            <div>
+            <img src="logo2.png" style="height: 50px;width: 75px;">
+            </div>
+        </li>
+        <li class="navbar_right">
+            <div>
+            <a href="contact.php" class="logout"> 
+            <i class="far fa-envelope"></i>
+                Contact
+            </a>
+            </div>
+        </li>   
+    </ul>
+</nav>
 
     <main>
 
@@ -45,7 +59,7 @@
                     </div>
             </div>
 
-         <div>
+                <div>
                     <label for="birthday">Date of birth</label> <br>
                     <input type="date" id="birthday" name="birthday" required>
                 </div>
@@ -70,7 +84,7 @@
                     <input type="password" name="password" id="password" required>
                 </div>
 
-                <div class="js-error" style='display: none;'></div>
+                <div class="error js-error" style='display: none;'></div>
 
                 <div>
                     <button type="submit">Register</button>
