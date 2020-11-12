@@ -1,4 +1,5 @@
 $(document)
+//REGISTER
 .on("submit", "form.js-register", function(event) {
 
     event.preventDefault();
@@ -105,6 +106,7 @@ $(document)
     return false;
 })
 
+//ADDFLIGHT
 .on("submit", "form.js-addflight", function(event) {
     event.preventDefault();
 
@@ -151,6 +153,94 @@ $(document)
 
 })
 
+//CREATE ATL
+.on("submit", "form.js-createATL", function(event) {
+    event.preventDefault();
+
+    var _form = $(this);
+
+    var _error = $(".js-error", _form);
+
+    var dt = new Date();
+
+    var data = {
+        reg: $("#reg_createATL").val(),
+        date: dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate()
+    }
+
+    console.log(data);
+
+    $.ajax ({
+        type: 'POST',
+        url: 'ajax/ATL.php',
+        data: data,
+        dataType: 'json',
+        async: true,
+    })
+    .done(function ajaxDone(data) {
+        if(data.redirect !== undefined) {
+            window.location = data.redirect;
+        } else if(data.error !== undefined) {
+            _error.html(data.error).show();
+        }
+    })
+    .fail(function ajaxFailed(e) {
+        console.log('failed');
+    })
+    .always(function ajaxAlwaysDoThis(data) {
+        console.log('Always');
+    })
+
+
+    return false;
+})
+
+//CLOSE ATL
+.on("submit", "form.js-closeATL", function(event) {
+    event.preventDefault();
+
+    var _form = $(this);
+
+    var _error = $(".js-error", _form);
+
+    var dt = new Date();
+
+    var data = {
+        reg: $("#closeATL_reg").val(),
+        comm: $("#closeATL_comments").val(),
+        hours: $("#closeATL_hours").val(),
+        landings: $("#closeATL_landings").val(),
+        date: dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate()
+    }
+
+    console.log(data);
+
+    $.ajax ({
+        type: 'POST',
+        url: 'ajax/ATL.php',
+        data: data,
+        dataType: 'json',
+        async: true,
+    })
+    .done(function ajaxDone(data) {
+        if(data.redirect !== undefined) {
+            window.location = data.redirect;
+        } else if(data.error !== undefined) {
+            _error.html(data.error).show();
+        }
+    })
+    .fail(function ajaxFailed(e) {
+        console.log('failed');
+    })
+    .always(function ajaxAlwaysDoThis(data) {
+        console.log('Always');
+    })
+
+
+    return false;
+})
+
+//SEARCH FLIGHTS
 .on("submit", "form.js-search", function(event) {
     
     
@@ -193,6 +283,7 @@ $(document)
 
 })
 
+//ADD DOCUMENTS
 .on("submit", "form.js-add_doc", function(event) {
     event.preventDefault();
 
@@ -235,6 +326,7 @@ $(document)
 
 })
 
+//CHANGE PROFILE
 .on("submit", "form.js-change_profile", function(event) {
 
     event.preventDefault();
@@ -258,8 +350,6 @@ $(document)
     }
 
     _error.hide();
-    
-    console.log("a");
 
     $.ajax ({
         type: 'POST',
@@ -285,18 +375,3 @@ $(document)
 
     return false;
 })
-
-.ready(function() { 
-    $('#type').on('change', do_something); 
-}); 
- 
-function do_something() { 
-    var selected = $('#type').val(); 
-    console.log(selected);
-    $.ajax({ 
-        type:       'POST', 
-        dataType:   'json', 
-        data:       { value: selected }, 
-        async:      true    
-    }); 
-} 

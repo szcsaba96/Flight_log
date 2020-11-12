@@ -8,8 +8,6 @@
     
     }
 
-    
-
     //SEssion are always turned on
     if(!isset($_SESSION)) {
         session_start();
@@ -30,7 +28,5 @@
     include_once "functions.php";
 
     $con = DB::getConnection();
-
-    
 
 ?>

@@ -94,6 +94,35 @@ table td {
   padding: 15px;
 }
 
+.arrow-pointer {
+  width: 250px;
+  height: 50px;
+  background: #32557f;
+  position: relative;
+  }
+
+.arrow-pointer:after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0; width: 0; height: 0;
+    border-left: 25px solid #7eb4e2;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+  }
+
+  .arrow-pointer:before {
+    content: '';
+    position: absolute;
+    right: -25px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 25px solid #32557f;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+  }
+
+    
 .btn{
   height:50px;
   line-height:50px;
@@ -101,13 +130,25 @@ table td {
   text-align:center;
   padding:0 10px;
   color:#ffffff;
-  background-color:#007bff;
   position:relative;
   display:inline-block;
   border: none;
   cursor: pointer;
+  background-color:#007bff;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
+}
+
+.btn:before{
+  position:absolute;
+  right:-20px;
+  content:" ";
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 25px 0 25px 20px;
+  border-color: transparent transparent transparent #007bff;
+  border-radius: 1px;
 }
 
 .btn:after{
@@ -118,7 +159,7 @@ table td {
   height: 0px;
   border-style: solid;
   border-width: 25px 0 25px 20px;
-  border-color: transparent transparent transparent #007bff;
+  border-color: transparent transparent transparent rgb(0, 34, 226);
   border-radius: 1px;
 }
 .btn:hover{
@@ -131,6 +172,31 @@ table td {
   border-width: 25px 0 25px 20px;
   border-color: transparent transparent transparent rgb(0, 34, 226);
 }
+
+#createATLButton {
+   background-color:#007bff;
+}
+
+#createATLButton::after{
+  border-color: transparent transparent transparent #007bff;
+}
+
+#addflightButton {
+  background-color: #5cb85c;
+}
+
+#addflightButton::after {
+  border-color: transparent transparent transparent #5cb85c;
+}
+
+#closeATLButton {
+  background-color: #f0ad4e;
+}
+
+#closeATLButton::after {
+  border-color: transparent transparent transparent #f0ad4e;
+}
+
 
 .modal_header {
   padding: 15px;
@@ -203,7 +269,7 @@ table td {
   padding: 5px;
 }
 
-.form1 input, select { 
+.form1 input, select, textarea { 
   display: table-cell; 
   padding: 10px;
   margin: 5px;

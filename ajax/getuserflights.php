@@ -1,8 +1,15 @@
 <?php
 
+//allow the config
+define('__CONFIG__', true);
+//require the config
+require_once "../inc/config.php"; 
+
 $from = $_GET['from'];
 $to = $_GET['to'];
 $type = $_GET['type'];
+
+$user_id = (int) $_SESSION['user_id'];
 
 $con = mysqli_connect('localhost','root','','flight_log');
 if (!$con) {
@@ -10,17 +17,12 @@ if (!$con) {
 }
 
 mysqli_select_db($con,"flight_log");
-$sql= "SELECT * FROM flights WHERE ( flight_date BETWEEN '".$from."' AND '".$to."' )";
+$sql= "SELECT f.*, fl.aircraft_reg FROM flights f
+        JOIN fleet fl ON f.fleet_id = fl.aircraft_id
+         WHERE ( f.user_id = '".$user_id."' AND f.flight_date BETWEEN '".$from."' AND '".$to."' AND fl.type = '".$type."' )";
 $result = mysqli_query($con,$sql);
 
-$sql_airc = "SELECT aircraft_reg FROM fleet WHERE type = '".$type."' AND aircraft_id in (SELECT aircraft_id FROM flights)";
-$result_air = mysqli_query($con, $sql_airc);
-
-$reg = mysqli_fetch_array($result_air);
-
-
 echo "<link rel='stylesheet' href='css/style_myflights.css'>";
-
 echo "<table class='fly_table'>
 <tr>
   <th>Flight date</th>
@@ -36,8 +38,8 @@ echo "<table class='fly_table'>
 </tr>";
 
 $counter = 0;
-while($row = mysqli_fetch_array($result) ) {
-  
+while($date = mysqli_fetch_array($result) ) {
+
   $remainder = $counter % 2;
   if($remainder == 0){
     //echo $number . ' is even!';
@@ -45,18 +47,18 @@ while($row = mysqli_fetch_array($result) ) {
 } else {
   echo "<tr class='tbody_row' >"; 
 }
-     $counter++;
+    $counter++;
 
-    echo "<td class='date'>" . $row['flight_date'] . "</td>";
-    echo "<td class='reg'>" . $reg['aircraft_reg'] . "</td>";
-    echo "<td>" . $row['pilot'] . "</td>";
-    echo "<td>" . $row['instructor'] . "</td>";
-    echo "<td>" . $row['dep_place'] . "</td>";
-    echo "<td>" . $row['arr_place'] . "</td>";
-    echo "<td>" . $row['block_on'] . "</td>";
-    echo "<td>" . $row['block_off'] . "</td>";
-    echo "<td>" . $row['flight_time'] . "</td>";
-    echo "<td>" . $row['flights'] . "</td>";
+    echo "<td class='date'>" . $date['flight_date'] . "</td>";
+    echo "<td class='reg'>" . $date['aircraft_reg'] . "</td>";
+    echo "<td>" . $date['pilot'] . "</td>";
+    echo "<td>" . $date['instructor'] . "</td>";
+    echo "<td>" . $date['dep_place'] . "</td>";
+    echo "<td>" . $date['arr_place'] . "</td>";
+    echo "<td>" . $date['block_on'] . "</td>";
+    echo "<td>" . $date['block_off'] . "</td>";
+    echo "<td>" . $date['flight_time'] . "</td>";
+    echo "<td>" . $date['flights'] . "</td>";
   echo "</tr>";
 }
 echo "</table>";

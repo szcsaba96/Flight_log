@@ -24,8 +24,6 @@
 
                     <div class="dropdown-content">
                         <a href="profile_1.php">My profile</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
                     </div>
             </div>
         </li>
@@ -34,7 +32,7 @@
     </ul>
 </nav>
 
-<div class="in1 navbar">
+<div class="navbar">
 
     <ul id="sidemenu" class="sidemenu_list">
         <li class="sidemenu_items">

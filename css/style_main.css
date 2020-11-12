@@ -17,17 +17,10 @@ nav a {
     font-size: 17px;    
 }
 
-.in1 {
-    display: inline-block;
-}
-
 .navbar {
     position: fixed;
     overflow: hidden;
-    left: 180px;
-    width: 180px;
     height: 95%;
-    margin-left: -172px;
     border: none;
     background-color: #333;
 }
@@ -64,6 +57,7 @@ nav a {
 }
 
 .dashboard_body {
+    display: inline-block;
     color: black;
     margin-top: 15px;
     margin-left: 15%;
@@ -143,7 +137,8 @@ nav a {
 
   .form2 {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0,1fr));
+    grid-template-columns: repeat(2, 0.25fr);
+    grid-template-rows: repeat(6, 1fr);
     width: 80vw;
     margin: 0 auto;
     gap: 0.5em 1em;

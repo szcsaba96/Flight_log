@@ -65,7 +65,6 @@
 
 .fly_table td {
   text-align: center;
-  padding: 8px;
 }
 
 .fly_table .tbody_row {
@@ -76,5 +75,3 @@
   background-color: #f3f3f3;
   border-bottom: grey;
 }
-
-

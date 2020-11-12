@@ -9,17 +9,20 @@ class User {
     private $con;
 
     public $user_id;
-    public $email;
-    public $reg_time;
-    public $first_name;
-    public $last_name;
+    private $email;
+    private $reg_time;
+    private $first_name;
+    private $last_name;
+    private $mobile;
+    private $birth;
+    private $address;
 
     public function __construct(int $user_id) {
         $this->con = DB::getConnection();
 
         $user_id = Filter::Int( $user_id );
 
-        $user = $this->con->prepare("SELECT user_id, email, reg_time, first_name, last_name FROM users WHERE user_id = :user_id LIMIT 1");
+        $user = $this->con->prepare("SELECT user_id, email, reg_time, first_name, last_name, tel_number, birthday, address, email FROM users WHERE user_id = :user_id LIMIT 1");
         $user->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $user->execute();
 
@@ -31,12 +34,51 @@ class User {
             $this->reg_time = (string) $user->reg_time;
             $this->first_name = (string) $user->first_name;
             $this->last_name = (string) $user->last_name;
+            $this->mobile = (string) $user->tel_number;
+            $this->birth = (string) $user->birthday;
+            $this->address = (string) $user->address;
 
         } else {
             //no user, redirect to logout
             header("Location: logout.php");
             exit;
         }   
+    }
+
+    public function getUserId() {
+        return $this->$user_id;
+    }
+
+    public function getName() {
+
+    $full_name = $this->first_name . " " . $this->last_name;
+
+    return $full_name;
+
+    }
+
+    public function getFirstName() {
+        return $this->first_name;
+    }
+
+    public function getLastName() {
+        return $this->last_name;
+    }
+
+    public function getMobile() {
+        return $this->mobile;
+    }
+
+    public function getBirth() {
+        return $this->birth;
+    }
+
+    public function getAddress(){
+        return $this->address;
+    }
+
+    public function getEmail() {
+        return $this->email;
     }
 
     public static function Find( $email, $return_assoc = false) {
@@ -55,14 +97,6 @@ class User {
         
         $user_found = (boolean) $findUser->rowCount();
         return $user_found;
-    }
-
-    public function getName() {
-
-    $full_name = $this->first_name . " " . $this->last_name;
-
-    return $full_name;
-
     }
 
     public static function lastFlight($user_id, $type) {

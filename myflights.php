@@ -7,6 +7,7 @@
     Page::ForceLogin();
 
     $User = new User($_SESSION['user_id']);
+
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +26,6 @@
     var to;
     var type;
 
-
     function showUser(from, to, type) {
     if (from == "") {
         document.getElementById("txtHint").innerHTML = "";
@@ -42,8 +42,6 @@
         }
     }
 
-
-
     function setFrom(str) {
         if(typeof from !== "undefined") {
             showUser(str, to, type);
@@ -59,59 +57,68 @@
     }
 
     function setType(str) {
+        if(typeof type !== "undefined") {
+            window.location.href = window.location.href.replace( /[\?#].*|$/, "?from=" +from + "&to=" + to + "&type=" + str );
+        }
         type = str;
         showUser(from, to, type);
     }
-
-    
-
     </script>
        
 </head>
 <body>
     
-    <?php include 'dashboard_body.shtml'; ?>
+    <?php include 'dashboard_body.shtml'; 
+    
+    if( isset($_GET['from']) && isset($_GET['to']) && isset($_GET['type']) ) {
+        $from = $_GET['from'];
+        $to = $_GET['to'];
+        $type = $_GET['type'];
+
+        echo "<script type='text/javascript'>
+            showUser('$from', '$to', '$type');
+            setFrom('$from');
+            setTo('$to');
+        </script>";
+    }
+
+    ?>
 
     <main>
 
-        <div class="in1 dashboard_body">
+        <div class="dashboard_body">
             <h3> My flights </h3>
             <hr>
             <div class="dashboard_before_after">
                 
                 <form>
-                
                 <ul class="side-by-side">
                     <li>
                         <label for="from">From</label> <br>
-                        <input type="date" name="from" id="from" onchange="setFrom(this.value)">
+                        <input type='date' name='from' id='from' onchange='setFrom(this.value)' <?php if(isset($from) ) { echo "value=$from"; } ?> >
                     </li>
                     <li>
 
                         <label for="to">To</label> <br>
-                        <input type="date" name="to" id="to" onchange="setTo(this.value)">
-
+                        <input type='date' name='to' id='to' onchange='setTo(this.value)' <?php if(isset($to) ) { echo "value=$to"; } ?> >
                     </li>
                     <li>
 
                         <label for="type">Type of aircraft</label> <br>
-                        <select name="type" id="type" onchange="setType(this.value)">
+                        <select name='type' id='type' onchange='setType(this.value)'>
                             <option> Select Type </option>
-                            <option value="ULM"> ULM </option>
-                            <option value="PPL"> PPL </option>
-                            <option value="GLIDER"> Glider </option>
+                            <option value="ULM" <?php if(isset($type) && $type=='ULM') { echo "selected"; } ?> > ULM </option>
+                            <option value="PPL" <?php if(isset($type) && $type=='PPL') { echo "selected"; } ?> > PPL </option>
+                            <option value="GLIDER" <?php if(isset($type) && $type=='GLIDER') { echo "selected"; } ?> > Glider </option>
                         </select>
                     </li>
                 </ul>
-
-                
                 </form>
             </div>
             
         </div>
 
-
-        <div class="in1 dashboard_body" id="txtHint">
+        <div class="dashboard_body" id="txtHint">
         </div>
          
     </main>
