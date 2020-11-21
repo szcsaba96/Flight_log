@@ -165,7 +165,6 @@
 
                 <button onClick="ajaxCalls('insertForm', 'form1')" style="margin-top: 20px;"> Add </button>
 
-
             </form>
         </div>
     </main>

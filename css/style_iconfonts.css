@@ -37,3 +37,9 @@
 .icon-glider_icon:before {
   content: "\e900";
 }
+
+@media only screen and (max-width: 1145px) {
+  [class^="icon-"], [class*=" icon-"] {
+    font-size: 60px;
+  }
+}

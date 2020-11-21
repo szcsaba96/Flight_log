@@ -18,6 +18,7 @@ nav a {
 }
 
 .navbar {
+    max-width: 15%;
     position: fixed;
     overflow: hidden;
     height: 95%;
@@ -39,6 +40,7 @@ nav a {
   padding: 10px;
   margin-left: 25px;
 }
+
 
 .sidemenu_list {
     color: white;
@@ -64,10 +66,15 @@ nav a {
     width: 80%;
 }
 
+@media only screen and (max-width: 1145px) {
+  .dashboard_body {
+    margin-left: 20%;
+  }
+}
+
 .dashboard_before_after {
     background-color:#eee;
-    border-radius: 4px;
-    
+    border-radius: 10px;
 }
 
   /* The dropdown container */
@@ -88,7 +95,16 @@ nav a {
   }
   
   /* Add a red background color to navbar links on hover */
-  .navbar a:hover, .dropdown:hover .dropbtn {
+  .navbar a:hover  {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: grey;
+    box-shadow: 0px 20px 40px rgba(0,0,0,0.4);
+    transform: scale(1.05,1.05);
+    transition: .3s;
+  }
+
+  .dropdown:hover .dropbtn {
     background-color: grey;
   }
   

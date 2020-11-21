@@ -59,6 +59,13 @@
                 <i class="fas fa-plane"></i>
                 Fleet</a>
         </li>
+
+        <li class="sidemenu_items">
+            <a href="planning.php">
+                <i class="fas fa-calendar-alt"></i>
+                Planning
+            </a>
+        </li>
     </ul>
 </div>
 

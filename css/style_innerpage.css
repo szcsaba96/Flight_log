@@ -20,9 +20,6 @@
 .col-1 {
   text-align: center;   
 }
-.col-2 {
-  
-}
 
 table {
   table-layout: fixed;
@@ -34,14 +31,46 @@ table td {
     vertical-align: middle;
 }
 
+.flex1 {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 5%;
+}
+
+/* Grow Shadow */
+.hvr-grow-shadow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
+}
+.hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
 .info_box_table {
   display: inline-table;
   table-layout: fixed;
   width: 400px;
   height: 200px;
+  border-radius: 8px;
+  cursor: default;
+  margin: 15px 25px;
 }
 
 .table-foot {
+  cursor: pointer;
   background-color: rgb(224, 223, 223);
   border-radius: 4px;
   padding: 2px;
@@ -51,27 +80,29 @@ table td {
   color: #2e6da4;
 }
 
-.info_box1_left {
-  margin: 5px;
+/* Round the bottom footer corners */
+.info_box_table .table-foot div:first-child{
+  border-bottom-left-radius: 6px;
+}
+
+.info_box_table .table-foot div:last-child{
+  border-bottom-right-radius: 6px;
+  text-align: center;
 }
 
 .info_box_body {
   width: 400px;
   height: 200px;
-  border-radius: 4px;
-
 }
 
-
 .info_box1 {
-  margin-top: 35px;
   border-color: #f0ad4e;
   color: #fff;
   background-color: #f0ad4e;
+  border-bottom-left-radius: 6px;
 }
 
 .info_box2 {
-  margin-top: 100px;
   border-color: #5cb85c;
   color: #fff;
   background-color: #5cb85c;
@@ -92,110 +123,94 @@ table td {
 
 .workspace {
   padding: 15px;
+  margin-top: 25px;
 }
 
-.arrow-pointer {
-  width: 250px;
-  height: 50px;
-  background: #32557f;
+.workspace h2 {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.pointer {
+  width: fit-content;
+  height: 40px;
   position: relative;
-  }
-
-.arrow-pointer:after {
-    content: '';
-    position: absolute;
-    left: 0; bottom: 0; width: 0; height: 0;
-    border-left: 25px solid #7eb4e2;
-    border-top: 25px solid transparent;
-    border-bottom: 25px solid transparent;
-  }
-
-  .arrow-pointer:before {
-    content: '';
-    position: absolute;
-    right: -25px;
-    bottom: 0;
-    width: 0;
-    height: 0;
-    border-left: 25px solid #32557f;
-    border-top: 25px solid transparent;
-    border-bottom: 25px solid transparent;
-  }
-
-    
-.btn{
-  height:50px;
-  line-height:50px;
-  vertical-align:middle;
-  text-align:center;
-  padding:0 10px;
-  color:#ffffff;
-  position:relative;
-  display:inline-block;
-  border: none;
+  background: #d9534f;
+  text-align: center;
+  line-height: 35px;
+  display: inline-block;
   cursor: pointer;
-  background-color:#007bff;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  transition: all .2s ease-in-out;
 }
 
-.btn:before{
-  position:absolute;
-  right:-20px;
-  content:" ";
-  width: 0px;
-  height: 0px;
-  border-style: solid;
-  border-width: 25px 0 25px 20px;
-  border-color: transparent transparent transparent #007bff;
-  border-radius: 1px;
+.pointer:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
 }
 
-.btn:after{
-  position:absolute;
-  right:-20px;
-  content:" ";
-  width: 0px;
-  height: 0px;
-  border-style: solid;
-  border-width: 25px 0 25px 20px;
-  border-color: transparent transparent transparent rgb(0, 34, 226);
-  border-radius: 1px;
+.pointer:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 20px solid #eee;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
 }
-.btn:hover{
-  background-color:rgb(0, 34, 226);
+.pointer:before {
+  content: "";
+  position: absolute;
+  right: -20px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 20px solid #d9534f;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
 }
-.btn:hover:after{
-  width: 0px;
-  height: 0px;
-  border-style: solid;
-  border-width: 25px 0 25px 20px;
-  border-color: transparent transparent transparent rgb(0, 34, 226);
+
+.pointer span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+  font-weight: bold;
+  font-size: 15px;
+  color: #fff;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#bookFlightButton {
+  background-color: #5bc0de;
 }
 
 #createATLButton {
-   background-color:#007bff;
+  margin-left: -2%;
 }
 
-#createATLButton::after{
-  border-color: transparent transparent transparent #007bff;
+#createATLButton::after {
+  border-color: transparent transparent transparent #5bc0de;
 }
 
 #addflightButton {
   background-color: #5cb85c;
 }
 
-#addflightButton::after {
-  border-color: transparent transparent transparent #5cb85c;
-}
-
 #closeATLButton {
+  margin-left: -2%;
   background-color: #f0ad4e;
 }
 
-#closeATLButton::after {
+#closeATLButton:before {
   border-color: transparent transparent transparent #f0ad4e;
 }
+
+#closeATLButton:after {
+  border-left: 20px solid #5cb85c;
+}
+
 
 
 .modal_header {
@@ -206,7 +221,7 @@ table td {
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
+    opacity: 0;
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -214,8 +229,14 @@ table td {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    transform: translateY(-200%);
+    transition: all .6s ease-in-out;
+  }
+
+  .active {
+    transform: translateY(0);
+    opacity: 1;
   }
   
   /* Modal Content/Box */
@@ -330,4 +351,35 @@ table td {
 .info1 p {
   margin: 8px;
   font-size: 15px;
+}
+
+
+@media only screen and (max-width: 976px) {
+  .pointer span {
+    font-size: 13px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+}
+
+@media only screen and (max-width: 1370px) {
+  .form1 input, select, textarea {
+    width: 200px;
+  }
+}
+
+@media only screen and (max-width: 1145px) {
+  .info_box_table{
+    width: 350px;
+    margin: 10px 20px;
+  }
+
+  .info_box1_row {
+    font-size: 16px;
+  }
+}
+
+.toggleVisibility {
+  visibility: hidden
 }

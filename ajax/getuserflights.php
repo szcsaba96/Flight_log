@@ -48,7 +48,6 @@ while($date = mysqli_fetch_array($result) ) {
   echo "<tr class='tbody_row' >"; 
 }
     $counter++;
-
     echo "<td class='date'>" . $date['flight_date'] . "</td>";
     echo "<td class='reg'>" . $date['aircraft_reg'] . "</td>";
     echo "<td>" . $date['pilot'] . "</td>";

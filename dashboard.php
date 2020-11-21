@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/style_iconfonts.css">
     <link rel="icon" type="image/png" href="inc/images/air.png">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="js/modal.js"></script>
 
 </head>
 
@@ -32,15 +33,27 @@
         <?php include 'dashboard_body.shtml'; ?>
 
         <div class="dashboard_body">
-            <h3>Dashboard</h3>
+            <h1>Dashboard</h1>
 
             <div class="container">
                 <hr>
                 <div class="dashboard_before_after">
                     <div class="workspace">
-                        <!-- CREATE ATL -->
-                        <button id="createATLButton" class="btn"
-                            onclick="initModal('createATLModal', 'createATLButton', 0)">Create an ATL</button>
+
+                    <h2>Before flight</h2>
+
+                    <!-- Book a flight -->
+                    <div id="bookFlightButton" class="pointer grow"
+                        onclick="sendToPlanning()">
+                        <span> Book a flight </span>
+                    </div>
+
+
+                    <!-- CREATE ATL -->
+                    <div id="createATLButton" class="pointer grow"
+                            onclick="initModal('createATLModal', 'createATLButton', 0)">
+                            <span> Create an ATL </span>
+                    </div>
 
                         <!-- The Modal -->
                         <div id="createATLModal" class="modal">
@@ -90,13 +103,20 @@
                             </div>
                             <!-- CREATE ATL END -->
                         </div>
+                    
+                    <br>
+
+
+                    <h2 style="margin-top: 2%;">After flight</h2>
+                        
 
                         <!-- Add FLIGHT Modal -->
 
                         <!-- Trigger/Open The Modal button-->
-                        <button id="addflightButton" class="btn" style="margin-left: 2%"
-                            onclick="initModal('addflightModal','addflightButton', 1)">Enter a flight into the
-                            system</button>
+                        <div id="addflightButton" class="pointer"
+                            onclick="initModal('addflightModal','addflightButton', 1)">
+                            <span>Enter a flight into the system</span>
+                        </div>
 
                         <!-- The Modal -->
                         <div id="addflightModal" class="modal">
@@ -207,8 +227,10 @@
                         <!-- Flight system end -->
 
                         <!-- CLOSE AN ATL -->
-                        <button id="closeATLButton" class="btn" style="margin-left: 2%"
-                            onclick="initModal('closeATLModal','closeATLButton', 2)">Fill and close an ATL</button>
+                        <div id="closeATLButton" class="pointer"
+                            onclick="initModal('closeATLModal','closeATLButton', 2)">
+                            <span> Fill and close an ATL </span>
+                        </div>
                         <!-- The Modal -->
                         <div id="closeATLModal" class="modal">
 
@@ -283,60 +305,96 @@
             </div>
 
             <?php // Dashboard body info boxes ?>
-            <table>
-                <tr>
-                    <td>
-                        <div>
-                            <div class="info_box_inline info_box1 info_box_table">
-                                <div class="table-colgroup">
-                                    <div class="table-col col-1"></div>
-                                    <div class="table-col"></div>
-                                    <div class="table-col"></div>
-                                </div>
+            <div class="flex1">
 
-                                <div class="table-row info_box1_row">
-                                    <div class="table-cell info_box1_left"><span class="icon-glider_icon"
-                                            style="margin-top: 15px; margin-left: 15px;"></span> </div>
-                                    <div class="table-cell"></div>
-                                    <div class="table-cell">My flights</div>
-                                </div>
+                <!-- Info BOX 1 -->
+                <div class="info_box1 info_box_table hvr-grow-shadow">
+                    <div class="table-colgroup">
+                        <div class="table-col col-1"></div>
+                        <div class="table-col"></div>
+                        <div class="table-col"></div>
+                    </div>
 
-                                <div class="table-row info_box1_row">
-                                    <div class="table-cell"></div>
-                                    <div class="table-cell">Last flight</div>
-                                    <div class="table-cell">
-                                        <?php
+                    <div class="table-row info_box1_row">
+                        <div class="table-cell info_box1_left"> <span class="icon-glider_icon"
+                                style="margin-top: 15px; margin-left: 15px;"></span> </div>
+                        <div class="table-cell"></div>
+                        <div class="table-cell">My flights</div>
+                    </div>
 
-                        echo $User->lastFlight($User->user_id, "GLIDER") ;
-                        ?>
-                                    </div>
-                                </div>
-
-                                <div class="table-row info_box1_row">
-                                    <div class="table-cell"></div>
-                                    <div class="table-cell">Total hours</div>
-                                    <div class="table-cell">
-                                        <?php
-                            echo $User -> totalHours($User->user_id, "GLIDER");
-
-                        ?>
-                                    </div>
-                                </div>
-
-                                <div class="table-row info_box1_row table-foot">
-                                    <div class="table-cell"><a href="myflights.php"
-                                            style="text-decoration: none; color: #f0ad4e;"> View details </a></div>
-                                    <div class="table-cell"></div>
-                                    <div class="table-cell"><a href="myflights.php"><i
-                                                class="fas fa-info-circle"></i></a></div>
-                                </div>
-                            </div>
+                    <div class="table-row info_box1_row">
+                        <div class="table-cell"></div>
+                        <div class="table-cell">Last flight</div>
+                        <div class="table-cell">
+                            <?php
+                                echo $User->lastFlight($User->user_id, "GLIDER") ;?>
                         </div>
-        </div>
-        </td>
-        <td>
-            <div style="margin-left: 65px; margin-bottom: 65px;">
-                <div class="info_box_inline info_box2 info_box_table">
+                    </div>
+
+                    <div class="table-row info_box1_row">
+                        <div class="table-cell"></div>
+                        <div class="table-cell">Total hours</div>
+                        <div class="table-cell">
+                            <?php echo $User -> totalHours($User->user_id, "GLIDER");?>
+                        </div>
+                    </div>
+
+                    <div class="table-row info_box1_row table-foot" onclick="location.href='myflights.php'">
+                        <div class="table-cell"><a style="text-decoration: none; color: #f0ad4e;">
+                                View details </a></div>
+                        <div class="table-cell"></div>
+                        <div class="table-cell"><a><i class="fas fa-info-circle"></i></a></div>
+                    </div>
+
+                    <!-- info box end -->
+                </div>
+
+                <!-- Info BOX 2 -->
+                <div class="info_box3 info_box_table hvr-grow-shadow">
+                    <div class="table-colgroup">
+                        <div class="table-col col-1"></div>
+                        <div class="table-col"></div>
+                        <div class="table-col"></div>
+                    </div>
+
+                    <div class="table-row info_box1_row">
+                        <div class="table-cell info_box1_left"><span class="icon-aircraft"
+                                style="margin-top: 15px; margin-left: 15px;"></span> </div>
+                        <div class="table-cell"></div>
+                        <div class="table-cell">My flights</div>
+                    </div>
+
+                    <div class="table-row info_box1_row">
+                        <div class="table-cell"></div>
+                        <div class="table-cell">Last flight</div>
+                        <div class="table-cell">
+                            <?php
+
+                        echo $User->lastFlight($User->user_id, "PPL") ;
+                        ?>
+                        </div>
+                    </div>
+
+                    <div class="table-row info_box1_row">
+                        <div class="table-cell"></div>
+                        <div class="table-cell">Total hours</div>
+                        <div class="table-cell">
+                            <?php
+                            echo $User -> totalHours($User->user_id, "PPL");
+
+                        ?>
+                        </div>
+                    </div>
+
+                    <div class="table-row info_box1_row table-foot" onclick="location.href='myflights.php'">
+                        <div class="table-cell"><a style="text-decoration: none; color: #d9534f;">View details</a> </div>
+                        <div class="table-cell"></div>
+                        <div class="table-cell"><a><i class="fas fa-info-circle"></i></a></div>
+                    </div>
+                </div>
+
+                <!-- Info BOX 3 -->
+                <div class="info_box2 info_box_table hvr-grow-shadow">
                     <div class="table-colgroup">
                         <div class="table-col col-1"></div>
                         <div class="table-col"></div>
@@ -370,102 +428,37 @@
                         </div>
                     </div>
 
-                    <div class="table-row info_box1_row table-foot">
-                        <div class="table-cell"><a href="myflights.php" style="text-decoration: none; color: #5cb85c;">
+                    <div class="table-row info_box1_row table-foot" onclick="location.href='myflights.php'">
+                        <div class="table-cell"><a style="text-decoration: none; color: #5cb85c;">
                                 View details </a></div>
                         <div class="table-cell"></div>
-                        <div class="table-cell"><a href="myflights.php"><i class="fas fa-info-circle"></i></a></div>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </td>
-
-        <td>
-            <div class="info_box_inline info_box3 info_box_table" style="margin-left: 65px; margin-bottom: -35px;">
-                <div class="table-colgroup">
-                    <div class="table-col col-1"></div>
-                    <div class="table-col"></div>
-                    <div class="table-col"></div>
-                </div>
-
-                <div class="table-row info_box1_row">
-                    <div class="table-cell info_box1_left"><span class="icon-aircraft"
-                            style="margin-top: 15px; margin-left: 15px;"></span> </div>
-                    <div class="table-cell"></div>
-                    <div class="table-cell">My flights</div>
-                </div>
-
-                <div class="table-row info_box1_row">
-                    <div class="table-cell"></div>
-                    <div class="table-cell">Last flight</div>
-                    <div class="table-cell">
-                        <?php
-
-                        echo $User->lastFlight($User->user_id, "PPL") ;
-                        ?>
+                        <div class="table-cell"><a><i class="fas fa-info-circle"></i></a></div>
                     </div>
                 </div>
 
-                <div class="table-row info_box1_row">
-                    <div class="table-cell"></div>
-                    <div class="table-cell">Total hours</div>
-                    <div class="table-cell">
-                        <?php
-                            echo $User -> totalHours($User->user_id, "PPL");
 
-                        ?>
-                    </div>
-                </div>
-
-                <div class="table-row info_box1_row table-foot">
-                    <div class="table-cell"><a href="myflights.php" style="text-decoration: none; color: #d9534f;"> View
-                            details</a> </div>
-                    <div class="table-cell"></div>
-                    <div class="table-cell"><a href="myflights.php"><i class="fas fa-info-circle"></i></a></div>
-                </div>
+                <!-- FLEX END -->
             </div>
-            </div>
-        </td>
 
-        </tr>
-        </table>
         </div>
+
+
+
         </div>
+
+
+        <!-- DASHBOARD BODY END -->
+        </div>
+
+
+        </div>
+
+
     </main>
 
     <footer>
         <?php require_once "inc/footer.php" ?>
         <script>
-        // Get the modals
-        var modal;
-        // Get the button that opens the modals
-        var btn;
-        // Get the <span> element that closes the modal
-        var span;
-
-        function initModal(str1, str2, i) {
-
-            modal = document.getElementById(str1);
-            btn = document.getElementById(str2);
-            span = document.getElementsByClassName('close')[i];
-
-            modal.style.display = "block";
-
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-                modal.style.display = "none";
-            }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-
-        }
-
         function changeType(type) {
             if (type == "") {
                 document.getElementById("txtHint").innerHTML = "";
