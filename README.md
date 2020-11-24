@@ -90,10 +90,10 @@ mysqli_close($con);
 * View flight experience categorized by type of aircraft flown
 * View the available fleet owned by the organization
 * Upload documents to get them verified
+* Flight booking system
+* Aircraft resource management
 
 To-do list:
-* Improve the coding by cleaning it up
-* Adding more features to dashboard
 * Adding admin user privileges
 
 ## Status
