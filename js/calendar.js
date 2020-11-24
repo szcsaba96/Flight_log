@@ -16,7 +16,6 @@ $(document)
         start: arr[0],
         end: arr[2],
         instructor_book: $("#instructor_book").val(),
-        pilot: $("#pilot").val(),
         comm_book: $("#comm_book").val(),
     }
 
@@ -52,9 +51,9 @@ $(document)
 $(document).ready(function () {
     var calendar = $('#calendar').fullCalendar({
         aspectRatio: 2,
-        editable: true,
+        editable: false,
         events: "fullcalendar/fetch-event.php",
-        displayEventTime: false,
+        displayEventTime: true,
         fixedWeekCount: false,
         header: {
             left: 'prev,next today',
@@ -107,19 +106,24 @@ $(document).ready(function () {
         },
 
         eventClick: function (event) {
-            var deleteMsg = confirm("Do you really want to delete?");
-            if (deleteMsg) {
-                $.ajax({
-                    type: "POST",
-                    url: "fullcalendar/delete-event.php",
-                    data: "&id=" + event.id,
-                    success: function (response) {
-                        if(parseInt(response) > 0) {
-                            $('#calendar').fullCalendar('removeEvents', event.id);
-                            displayMessage("Deleted Successfully");
+            let user_id = $("#user_id").val();
+
+            if( event.pilot_id == user_id ) {
+                var deleteMsg = confirm("Do you really want to delete?");
+                if (deleteMsg) {
+                    $.ajax({
+                        type: "POST",
+                        url: "fullcalendar/delete-event.php",
+                        data: "&id=" + event.event_id,
+                        success: function (response) {
+                            if(parseInt(response) > 0) {
+                                $('#calendar').fullCalendar('removeEvents', event.event_id);
+                                displayMessage("Deleted Successfully");
+                                $('#calendar').fullCalendar( 'refetchEvents' );
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
         }
 

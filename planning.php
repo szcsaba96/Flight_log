@@ -152,10 +152,12 @@
         
         <div class="in1" id="fullCalendar_dashboard">
 
+        <?php echo "<input type='hidden' id='user_id' value='".$_SESSION['user_id']."'/>";?>
+
             <!-- INCLUDE FULLCALENDAR -->
             <script src="fullcalendar/lib/jquery.min.js"></script>
             <script src="fullcalendar/lib/moment.min.js"></script>
-            <script src="fullcalendar/fullcalendar.min.js"></script>
+            <script src="fullcalendar/fullcalendar.min.js"></script> 
             <script src="js/calendar.js"></script>
 
             <div class="response"></div>

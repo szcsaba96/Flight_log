@@ -14,19 +14,33 @@
     $date = Filter::String($_POST['date_book']);
     $start = $date." ".Filter::String($_POST['start']).":00";
     $end = $date." ".Filter::String($_POST['end']).":00";
-    $instructor_id = Filter::String($_POST['instructor_book']);
-    $pilot = Filter::String($_POST['pilot']);
+    $instructor_id = Filter::Int($_POST['instructor_book']);
     $comm = Filter::String( $_POST['comm_book']);
 
+    $pilot_id = $_SESSION['user_id'];
 
-    $getInstructorName = $con -> prepare("SELECT last_name, first_name FROM users WHERE user_id = '".$instructor_id."' ");
-    $getInstructorName -> execute();
+    //check if user already added book or not, and if added get the color hex, else generate one
+    $sqlCheckUser = $con -> prepare("SELECT color FROM events WHERE pilot_id = '".$pilot_id."' ");
+    $sqlCheckUser -> execute();
+    $res = $sqlCheckUser -> fetch(PDO::FETCH_ASSOC);
+    $user_found = (boolean) $sqlCheckUser->rowCount();
 
-    $getInstructorName = $getInstructorName->fetch(PDO::FETCH_ASSOC);
-    $instructorName = $getInstructorName['last_name']." ".$getInstructorName['first_name'];
-   
-    $bookFlight = $con -> prepare("INSERT INTO tbl_events(title, start, end, pilot, instructor, comments)
-                                    VALUES ('".$aircraft_reg."', '".$start."','".$end ."', '".$pilot."', '".$instructorName."', '".$comm."' )");
+
+    //if user was found, get it's color hex
+    if ( $user_found ) {
+        $color = $res['color'];
+    } else { 
+        //generate random color
+        $color = '#'.str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+    }
+    
+    if ( empty($instructor_id) ) {
+        $bookFlight = $con -> prepare("INSERT INTO events(title, start, end, pilot_id, comments, color)
+                                    VALUES ('".$aircraft_reg."', '".$start."','".$end ."', '".$pilot_id."', '".$comm."', '".$color."'  )");
+    } else {
+        $bookFlight = $con -> prepare("INSERT INTO events(title, start, end, pilot_id, instructor_id, comments, color)
+                                    VALUES ('".$aircraft_reg."', '".$start."','".$end ."', '".$pilot_id."', '".$instructor_id."', '".$comm."', '".$color."' )");
+    }
     $bookFlight -> execute();
 
     $return['redirect'] = 'planning.php';
