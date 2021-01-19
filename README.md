@@ -13,7 +13,11 @@
 The purpose of this project is to ease the work of the pilots, keeping track of the flights in a more organized and manageable manner. The users can add a flight with just a few clicks and types and after that they can view all informations about it sorted by the type of aircraft flown, date, departure and arrival place and many more.
 
 ## Screenshots
-![Example screenshot](./inc/images/Dashboard.png)
+![Example screenshot1](./inc/images/Dashboard.png)
+![Example screenshot2](./inc/images/Dashboard_enterflight.png)
+![Example screenshot3](./inc/images/Fleet.png)
+![Example screenshot4](./inc/images/Planning.png)
+![Example screenshot5](./inc/images/Myflights.png)
 
 ## Technologies
 * HTML - version 5
